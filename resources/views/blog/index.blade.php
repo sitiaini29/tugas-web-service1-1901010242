@@ -1,10 +1,13 @@
+@extends('blog.tmp')
+@section('judul', 'Data Blog')
+@section('isi')
+
 <div class="row mt4">
     <div class="col10">
         <div class="card">
             <div class="card-header">
                 Data Blog 
-                <a class="btn btn-primary float-right" 
-                href="{{url('blog/create')}}">Tambah</a>
+                <a class="btn btn-primary float-right" href="{{url('add-blog')}}">Tambah</a>
             </div>
                 <div class="card-body">
                     <table class="table table-bordered">
@@ -27,7 +30,11 @@
             <td>{{ $row->body}}</td>
             <td>{{ $row->keyword}}</td>
             <td>
-                <a href="">Hapus</a>
+            <form action="{{ route('delete.blog', $row->id) }}" method="post">
+
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda Yakin ?')">Hapus</button>
             </td>
         </tr>
         @endforeach
@@ -37,3 +44,4 @@
 </div>
 </div>
 </div>
+@endsection

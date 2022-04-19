@@ -14,15 +14,25 @@
     </thead>
     <tbody>
         @foreach ($data as $row)
+        
 
         <tr>
             <td>{{$loop->iteration }}</td>
             <td>{{ $row->nik }}</td>
-            <td>{{ $row->nama_dosen }}</td>
-            <td>{{ $row->Umur }}</td>
+            <td>{{ $row->nama_mahasiswa }}</td>
+            <td>{{ $row->umur }}</td>
             <td>
+                <form action="{{ route('delet.mahasiswa', $row->id) }}" method="post">
+                    @csrf
+                    @methode('DELETE')
+
+                    <button type="submit"
+                    class="btn btn-danger btn-sm"
+                    onclick="_return confirm('Anda Yakin ?')"
                 <a href="">Hapus</a>
+</form>
             </td>
+
         </tr>
        @endforeach
         

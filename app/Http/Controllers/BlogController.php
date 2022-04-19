@@ -18,4 +18,20 @@ class BlogController extends Controller
     {
         return view('blog/create');
     }
+
+    public function store(Request $request)
+
+    {
+        //dd($request->all());
+       
+        Blog::create($request->all());
+        return redirect(url('data-blog'));
+
+    }
+    
+    public function destroy(Blog $id)
+    {
+        $id->delete();
+        return redirect(url('data-blog'));
+    }
 }
