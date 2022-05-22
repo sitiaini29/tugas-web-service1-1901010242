@@ -25,15 +25,20 @@
                 <form action="{{ route('delet.mahasiswa', $row->id) }}" method="post">
                     @csrf
                     @methode('DELETE')
+                 {{-- tombol hapus --}}
 
-                    <button type="submit"
+                 <button type="submit"
                     class="btn btn-danger btn-sm"
                     onclick="_return confirm('Anda Yakin ?')"
-                <a href="">Hapus</a>
-</form>
-            </td>
+                    
+             >Hapus</button>
 
-        </tr>
+                <a href="{{ route('edit.mahasiswa',$row->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                
+
+            </form>
+            </td>
+           </tr>
        @endforeach
         
     </tbody>

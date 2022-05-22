@@ -35,3 +35,4 @@ class BlogController extends Controller
         return redirect(url('data-blog'));
     }
 }
+ 

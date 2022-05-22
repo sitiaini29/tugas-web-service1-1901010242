@@ -1,12 +1,23 @@
-<html>
-    <head>
-       <title>dari view</title>
-    </head>
-    <body>
-        <h2>Dari View</h2>
-        <a href="{{url('tentang') }}">tentang kami</a> <br>
-        <a href="{{route('tentang saya') }} "></a> <br>
+@extends('layouts.app')
 
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
-    </body>
-</html>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    {{ __('You are logged in!') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
