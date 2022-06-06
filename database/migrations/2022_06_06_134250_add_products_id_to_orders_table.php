@@ -1,10 +1,10 @@
-<?php
+v<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMahasiswaTable extends Migration
+class AddProductsIdToOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateMahasiswaTable extends Migration
      */
     public function up()
     {
-        Schema::create('mahasiswa', function (Blueprint $table) {
-           // $table->id();
-            //$table->nama();
-            //$table->umur();
-
-            $table->timestamps();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->integer('products_id');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateMahasiswaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mahasiswa');
+        Schema::table('orders', function (Blueprint $table) {
+            //
+        });
     }
 }

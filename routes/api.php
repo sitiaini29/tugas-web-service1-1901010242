@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\API\CostumerController;
+use App\Http\Controllers\API\ProductsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +18,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+    Route::get('v1/costumer', [CostumerController::class, 'index']);
+
+//crud products
+Route::get('/products', [ProductsController:: class, 'index'])->name('products.index');
+Route::post('/products', [ProductsController:: class, 'store'])->name('products.store');
+Route::get('/products/{products}', [ProductsController:: class, 'show'])->name('products.show');
+Route::put('/products/{products}', [ProductsController::class, 'update'])->name('products.update');
+Route::delete('/products/{products}',[ProductsController:: class, 'destroy'])->name('products.destroy');
+
+
+
