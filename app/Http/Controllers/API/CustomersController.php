@@ -3,21 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Orders;
+use App\Models\Customers;
 use Illuminate\Http\Request;
 
-class OrdersController extends Controller
+class CustomersController extends Controller
 {
     //
     public function index()
     {
-        $data = Orders::all();
-        //$data = Orders::with('costumers')->get();
+        $data = Customers::all();
         return response()-> json ($data, 200);
 
     }
 
-    public function show(Orders $id){
+    public function show(Customers $id){
         return response()->json($id, 200);
     }
 }

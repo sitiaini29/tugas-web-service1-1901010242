@@ -2,8 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\CostumerController;
+use App\Http\Controllers\API\OrdersController;
 use App\Http\Controllers\API\ProductsController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,7 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-    Route::get('v1/costumer', [CostumerController::class, 'index']);
+Route::get('v1/Orders', [OrdersController::class, 'index']);
+Route::get('v1/costumer/{id}', [CostumerController::class, 'show']);
+
 
 //crud products
 Route::get('/products', [ProductsController:: class, 'index'])->name('products.index');
