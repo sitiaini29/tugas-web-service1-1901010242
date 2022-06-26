@@ -10,11 +10,14 @@ use Illuminate\Http\Request;
 class ProductsController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['only' => ['index']]);
+    }
     public function index()
     {
         $data = Products::all();
         return response()-> json ($data, 200);
-
     }
 
     public function show(Products $id){

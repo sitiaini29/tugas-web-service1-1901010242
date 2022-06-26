@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\OrdersController;
 use App\Http\Controllers\API\ProductsController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('v1/Orders', [OrdersController::class, 'index']);
 Route::get('v1/costumer/{id}', [CostumerController::class, 'show']);
+Route::get('v1/products', [ProductsController::class, 'index']);
 
 
 //crud products
@@ -32,4 +34,19 @@ Route::put('/products/{products}', [ProductsController::class, 'update'])->name(
 Route::delete('/products/{products}',[ProductsController:: class, 'destroy'])->name('products.destroy');
 
 
+
+// authentication
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login',[\App\Http\Controllers\AuthController::class,'login']);
+    Route::post('logout', [\App\Http\Controllers\AuthController::class,'logout']);
+    Route::post('refresh', [\App\Http\Controllers\AuthController::class,'refresh']);
+    Route::post('me', [\App\Http\Controllers\AuthController::class,'me']);
+
+});
 
